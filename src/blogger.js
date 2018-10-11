@@ -1,6 +1,5 @@
 const fs = require('fs')
 const { google } = require('googleapis')
-const { OAuth2Client } = require('google-auth-library')
 const _ = require('lodash')
 const { join } = require('path')
 const marked = require('marked') // markedパッケージを読み込む
@@ -86,7 +85,6 @@ function post(meta, dir, content_path, auth) {
     }
   })
 
-  console.log(meta.resource.title, dir)
   if (!meta.forcePost && fs.existsSync(`${dir}/response.json`)){
     // Update
     const response = JSON.parse(fs.readFileSync(`${dir}/response.json`, 'utf-8'))
