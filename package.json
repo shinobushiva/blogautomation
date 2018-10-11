@@ -1,0 +1,26 @@
+{
+  "name": "blogautomation",
+  "version": "1.0.0",
+  "description": "Blog management automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinobushiva/blogautomation.git"
+  },
+  "author": "Shinobu Izumi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shinobushiva/blogautomation/issues"
+  },
+  "homepage": "https://github.com/shinobushiva/blogautomation#readme",
+  "dependencies": {
+    "google-auth-library": "^2.0.0",
+    "googleapis": "^34.0.0",
+    "lodash": "^4.17.11",
+    "marked": "^0.5.1",
+    "readline": "^1.3.0"
+  }
+}
