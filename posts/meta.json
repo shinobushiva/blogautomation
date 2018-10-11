@@ -1,8 +1,8 @@
 {
     "blogId": "7347312000041120146",
     "isDraft": false,
+    
     "ignore": true,
     "forcePost": false,
-    "content_path": "content.md",
-    "resource_folder": "res"
+    "content_path": "content.md"
 }

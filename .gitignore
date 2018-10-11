@@ -81,3 +81,4 @@ typings/
 
 #
 .credentials
+keys/*.json

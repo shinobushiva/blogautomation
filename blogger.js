@@ -4,8 +4,10 @@ const { OAuth2Client } = require('google-auth-library')
 const _ = require('lodash')
 const { join } = require('path')
 const marked = require('marked') // markedパッケージを読み込む
+const { JSDOM } = require("jsdom")
 
 const { authExec } = require('./googleAuth') 
+const { upload } = require('./aws') 
 
 // If modifying these scopes, delete your previously saved credentials
 const SCOPES = [
@@ -13,7 +15,7 @@ const SCOPES = [
   'https://www.googleapis.com/auth/blogger.readonly'
 ]
 
-authExec('client_secret.json', SCOPES, onAuthorized)
+authExec('keys/client_secret.json', SCOPES, onAuthorized)
 
 function applyRecursive(dir, meta0, func, QUEUE) {
   
@@ -61,7 +63,22 @@ function post(meta, dir, content_path, auth) {
   const markdown = fs.readFileSync(content_path, 'utf-8')
 
   const blogger = google.blogger({ version: 'v3', auth })
-  const html = marked(markdown)
+  const dom = new JSDOM(marked(markdown))
+
+  Array.from(dom.window.document.querySelectorAll("a"),  
+    e => {
+      e.href = upload(dir, e.href)
+    }
+  )
+  Array.from(dom.window.document.querySelectorAll("img"),
+    e => {
+      e.src = upload(dir, e.src)
+    }
+  )
+
+  const html = dom.window.document.querySelector('body').innerHTML
+  console.log(html)
+  
 
   let params = _.merge(meta, {
     resource: {
