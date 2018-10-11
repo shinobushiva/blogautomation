@@ -4,10 +4,12 @@ const uuid = require('uuid')
 const filetype = require('file-type')
 const path = require('path')
 
+require('dotenv').config()
+
 function upload(cdir, src) {
-    const bucket = "https://s3-ap-northeast-1.amazonaws.com/sitateru-tech-blog"
+    const bucket = `https://s3-${process.env.S3_BUCKET_REGION}.amazonaws.com/${process.env.S3_BUCKET_NAME}`
     AWS.config.loadFromPath('keys/aws_key.json')
-    AWS.config.update({region: 'ap-northeast-1'})
+    AWS.config.update({region: process.env.S3_BUCKET_REGION})
 
     if (!fs.existsSync(`${cdir}/${src}`)){
         return src
@@ -24,7 +26,7 @@ function upload(cdir, src) {
 
     const s3 = new AWS.S3()
     const params = {
-        Bucket: "sitateru-tech-blog",
+        Bucket: process.env.S3_BUCKET_NAME,
         Key: dest,
         ContentType: mime
     }

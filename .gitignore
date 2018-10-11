@@ -82,3 +82,4 @@ typings/
 #
 .credentials
 keys/*.json
+!keys/*.sample.json
