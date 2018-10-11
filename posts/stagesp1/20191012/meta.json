@@ -1,5 +1,6 @@
 {
     "ignore": false,
+    "forcePost": true,
     "resource": {
         "title": "テストコンテンツ"
     }

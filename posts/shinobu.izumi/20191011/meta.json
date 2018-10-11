@@ -1,5 +1,6 @@
 {
+    "ignore": true,
     "resource": {
-        "title": "ユーザー別できる？"
+        "title": "ユーザー別はキーを変えないとダメそう"
     }
 }

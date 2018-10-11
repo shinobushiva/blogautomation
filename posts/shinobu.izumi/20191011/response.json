@@ -1,0 +1,28 @@
+{
+  "kind": "blogger#post",
+  "id": "2781684374090955265",
+  "blog": {
+    "id": "7347312000041120146"
+  },
+  "published": "2018-10-11T16:50:00+09:00",
+  "updated": "2018-10-11T16:50:24+09:00",
+  "etag": "\"iHf3yWDE_geBgZ8U7rgZ_xuTeAQ/dGltZXN0YW1wOiAxNTM5MjQ0MjI0MjAyCm9mZnNldDogMzI0MDAwMDAK\"",
+  "url": "http://shinobu-shiva-automation.blogspot.com/2018/10/blog-post_40.html",
+  "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/2781684374090955265",
+  "title": "ユーザー別はキーを変えないとダメそう",
+  "content": "<p>ユーザー別テスト</p>\n",
+  "author": {
+    "id": "12353190872067808100",
+    "displayName": "Shinobu IZUMI",
+    "url": "https://www.blogger.com/profile/12353190872067808100",
+    "image": {
+      "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35"
+    }
+  },
+  "replies": {
+    "totalItems": "0",
+    "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/2781684374090955265/comments"
+  },
+  "status": "LIVE",
+  "readerComments": "ALLOW"
+}

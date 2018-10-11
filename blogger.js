@@ -17,6 +17,7 @@ authExec('client_secret.json', SCOPES, onAuthorized)
 
 function applyRecursive(dir, meta0, func, QUEUE) {
   
+  meta0 = Object.assign({}, meta0)
   const meta = fs.existsSync(`${dir}/meta.json`) ? 
     _.merge(meta0, JSON.parse(fs.readFileSync(`${dir}/meta.json`, 'utf-8'))) : meta0    
   if (meta.content_path && fs.existsSync(`${dir}/${meta.content_path}`)) {
@@ -69,7 +70,7 @@ function post(meta, dir, content_path, auth) {
   })
 
   console.log(meta.resource.title, dir)
-  if (fs.existsSync(`${dir}/response.json`)){
+  if (!meta.forcePost && fs.existsSync(`${dir}/response.json`)){
     // Update
     const response = JSON.parse(fs.readFileSync(`${dir}/response.json`, 'utf-8'))
     params.postId = response.id

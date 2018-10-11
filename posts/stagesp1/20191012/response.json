@@ -1,14 +1,14 @@
 {
   "kind": "blogger#post",
-  "id": "1863655499870294255",
+  "id": "1113175779156772046",
   "blog": {
     "id": "7347312000041120146"
   },
-  "published": "2018-10-11T13:44:00+09:00",
-  "updated": "2018-10-11T13:44:13+09:00",
-  "etag": "\"iHf3yWDE_geBgZ8U7rgZ_xuTeAQ/dGltZXN0YW1wOiAxNTM5MjMzMDUzNzU1Cm9mZnNldDogMzI0MDAwMDAK\"",
-  "url": "http://shinobu-shiva-automation.blogspot.com/2018/10/blog-post_99.html",
-  "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/1863655499870294255",
+  "published": "2018-10-11T16:50:00+09:00",
+  "updated": "2018-10-11T16:50:54+09:00",
+  "etag": "\"iHf3yWDE_geBgZ8U7rgZ_xuTeAQ/dGltZXN0YW1wOiAxNTM5MjQ0MjU0MzA5Cm9mZnNldDogMzI0MDAwMDAK\"",
+  "url": "http://shinobu-shiva-automation.blogspot.com/2018/10/blog-post_56.html",
+  "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/1113175779156772046",
   "title": "テストコンテンツ",
   "content": "<h1 id=\"-\">これはテストです</h1>\n<p>テスト短め</p>\n",
   "author": {
@@ -21,7 +21,7 @@
   },
   "replies": {
     "totalItems": "0",
-    "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/1863655499870294255/comments"
+    "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7347312000041120146/posts/1113175779156772046/comments"
   },
   "status": "LIVE",
   "readerComments": "ALLOW"
