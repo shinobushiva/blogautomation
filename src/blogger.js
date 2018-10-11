@@ -7,7 +7,7 @@ const marked = require('marked') // markedパッケージを読み込む
 const { JSDOM } = require("jsdom")
 
 const { authExec } = require('./googleAuth') 
-const { upload } = require('./aws') 
+const { upload } = require('./aws')
 
 // If modifying these scopes, delete your previously saved credentials
 const SCOPES = [
