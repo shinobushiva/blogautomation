@@ -118,3 +118,33 @@ npm run post
 ```
 を実行すると、posts配下に設置されたブログエントリが投稿されます。
 
+# OAuth credentialの取得
+```
+npm run oauth
+```
+`.credentials/googleapi.json` にクレデンシャルが保存されます
+
+# CIRCLE CI
+
+環境変数の設定が必要です。
+
+## ローカルで試す場合
+```
+circleci build \
+--env S3_BUCKET_REGION=*** \
+--env S3_BUCKET_NAME=*** \
+--env AWS_ACCESS_KEY_ID=*** \
+--env AWS_SECRET_ACCESS_KEY=*** \
+--env GOOGLE_CLIENT_ID=*** \
+--env GOOGLE_PROJECT_ID=*** \
+--env GOOGLE_CLIENT_SECRET=*** \
+--env GOOGLE_API_CREDENTIAL=***
+
+```
+GOOGLE_API_CREDENTIAL には .credentials/googleapi.json の内容全てを設定します。
+
+
+## 本番実行
+
+CircleCIで設定します。
+![環境変数](images/image-19.png)

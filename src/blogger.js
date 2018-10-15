@@ -20,11 +20,11 @@ function applyRecursive(dir, meta0, func, QUEUE) {
   
   meta0 = Object.assign({}, meta0)
   const meta = fs.existsSync(`${dir}/meta.json`) ? 
-    _.merge(meta0, JSON.parse(fs.readFileSync(`${dir}/meta.json`, 'utf-8'))) : meta0    
-  if (meta.content_path && fs.existsSync(`${dir}/${meta.content_path}`)) {
+    _.assign(meta0, JSON.parse(fs.readFileSync(`${dir}/meta.json`, 'utf-8'))) : meta0    
+  if (meta.contentPath && fs.existsSync(`${dir}/${meta.contentPath}`)) {
     if (!meta.ignore) {
       QUEUE.push(() => {
-        return func(meta, dir, `${dir}/${meta.content_path}`)
+        return func(meta, dir, `${dir}/${meta.contentPath}`)
       })
     }
   }
@@ -38,8 +38,8 @@ function applyRecursive(dir, meta0, func, QUEUE) {
 function onAuthorized (auth) {
   const QUEUE = []
   const dir = 'posts'
-  applyRecursive(dir, {}, (meta, dir, content_path) => {
-    return post(meta, dir, content_path, auth)
+  applyRecursive(dir, {}, (meta, dir, contentPath) => {
+    return post(meta, dir, contentPath, auth)
   }, QUEUE)
   console.log(QUEUE)
 
@@ -58,10 +58,23 @@ function onAuthorized (auth) {
   sequentialExec(QUEUE)
 }
 
-function post(meta, dir, content_path, auth) {
-  const markdown = fs.readFileSync(content_path, 'utf-8')
+function post(meta, dir, contentPath, auth) {
+  const markdown = fs.readFileSync(contentPath, 'utf-8')
 
   const blogger = google.blogger({ version: 'v3', auth })
+  marked.setOptions({
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
+    langPrefix: 'language-',
+    highlight: function(code, lang) {
+      return code;
+    }
+  })
   const dom = new JSDOM(marked(markdown))
 
   Array.from(dom.window.document.querySelectorAll("a"),  
@@ -76,7 +89,6 @@ function post(meta, dir, content_path, auth) {
   )
 
   const html = dom.window.document.querySelector('body').innerHTML
-  console.log(html)
   
 
   let params = _.merge(meta, {
@@ -85,17 +97,23 @@ function post(meta, dir, content_path, auth) {
     }
   })
 
+  const method = meta.isPage ? blogger.pages : blogger.posts
+
   if (!meta.forcePost && fs.existsSync(`${dir}/response.json`)){
     // Update
     const response = JSON.parse(fs.readFileSync(`${dir}/response.json`, 'utf-8'))
-    params.postId = response.id
-    return blogger.posts.patch(params).then((value) => {
+    if (meta.isPage) {
+      params.pageId = response.id
+    } else {
+      params.postId = response.id
+    }
+    return method.patch(params).then((value) => {
       fs.writeFileSync(`${dir}/response.json`, JSON.stringify(value.data, null , "  "))
       return value
     })
   } else {
     // Post New
-    return blogger.posts.insert(params).then((value) => {
+    return method.insert(params).then((value) => {
       fs.writeFileSync(`${dir}/response.json`, JSON.stringify(value.data, null , "  "))
       return value
     })

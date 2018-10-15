@@ -1,8 +1,11 @@
 {
-    "blogId": "7347312000041120146",
-    "isDraft": false,
+    "blogId": "1797929185044797553",
+    "isDraft": true,
+    "publish": false,
+    "revert": false,
     
-    "ignore": true,
+    "isPage": false,
+    "ignore": false,
     "forcePost": false,
-    "content_path": "content.md"
+    "contentPath": "content.md"
 }
